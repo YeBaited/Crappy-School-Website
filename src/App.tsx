@@ -9,8 +9,8 @@ function App() {
 
 
         <div className="ml-auto my-auto flex text-2xl">
-          <a className="mx-2 font-light text-white">Login</a>
-          <a className="mx-2 font-light text-white">Enroll</a>
+          <a href="/Login" className="mx-2 font-light text-white">Login</a>
+          <a href="/Enroll" className="mx-2 font-light text-white">Enroll</a>
           
 
         </div>
