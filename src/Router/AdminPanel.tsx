@@ -8,7 +8,26 @@ function AdminPanel(){
                 </div>
 
                 <div className="h-[30rem] w-[40rem] bg-blue-500 mx-1">
-                <h1 className="text-white text-xl font-bold text-center">Actions</h1>
+                    <h1 className="text-white text-xl font-bold text-center">Actions</h1>
+                    <div className="flex mt-1 p-2">
+                        <h1 className="font-bold text-white p-2">SELECTED: None</h1>
+                    </div>
+                    
+                    <div className="flex mt-1 p-2">
+                        <button className="bg-blue-700 p-2 text-white font-bold mx-2">Delete Account</button>
+                        <button className="bg-blue-700 p-2 text-white font-bold mx-2">Reset Password</button>
+                        <button className="bg-blue-700 p-2 text-white font-bold mx-2">Rest Username</button>
+                    </div>
+
+                    <div className="flex mt-1 p-2">
+                        <h1 className="font-bold text-white p-2">Server Wide</h1>
+                    </div>
+                    
+                    <div className="flex mt-1 p-2">
+                        <button className="bg-blue-700 p-2 text-white font-bold mx-2">Purge All</button>
+                        <button className="bg-blue-700 p-2 text-white font-bold mx-2">Purge Password</button>
+                        <button className="bg-blue-700 p-2 text-white font-bold mx-2">Purge Username</button>
+                    </div>
                 </div>
 
             </div>
