@@ -2,6 +2,10 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
+import Enroll from './Router/Enroll.tsx'
+import Login from './Router/Login.tsx'
+import AdminPanel from './Router/AdminPanel.tsx'
+
 import { 
   createBrowserRouter, 
   RouterProvider 
@@ -14,11 +18,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/Enroll",
-    element: <h1>Enroll</h1>
+    element: <Enroll />
   },
   {
     path: "/Login",
-    element: <h1>Login</h1>
+    element: <Login />
+  },
+  {
+    path: "/Admin",
+    element: <AdminPanel />
   },
   {
     path: "*",
