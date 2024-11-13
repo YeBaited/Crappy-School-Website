@@ -1,5 +1,12 @@
 
+function tryReq(){
+    console.log("Fetching lol!")
+    fetch("localhost:82")
+}
+
 function AdminPanel(){
+    
+
     return (
         <>  
             <div className="flex justify-center mt-5">
@@ -119,6 +126,25 @@ function AdminPanel(){
 
                          
                         <h1 className="text-xl text-white mt-2 ml-1">Status: Not yet responded!</h1>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div className="flex justify-center mt-5">
+                <div className="h-[30rem] w-[40rem] bg-blue-400 mx-1">
+                    <h1 className="text-white text-xl font-bold text-center">Activity Database</h1>
+                </div>
+
+                <div className="h-[30rem] w-[40rem] bg-blue-500 mx-1">
+                    <h1 className="text-white text-xl font-bold text-center">Activity Info</h1>
+                    <div className="flex-row justify-center">
+
+                        <div className="flex justify-center mt-5">
+                              
+                            <button className="bg-green-500 mx-2 text-xl font-bold px-5 text-red-500" onClick={tryReq}>Send Req</button>
+                        </div>
 
                     </div>
                 </div>
