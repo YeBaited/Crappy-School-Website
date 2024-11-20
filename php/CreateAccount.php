@@ -11,18 +11,32 @@
     $username = "root";
     $password = "";
 
+    function returnData($table){
+        echo json_encode($table);
+    };
+
     $sql = new mysqli($server ,$username, $password);
     if ($sql->error){
-        echo "An error occured!";
+        echo returnData(array(
+            "isSuccess" => true,
+            "reason" => "An error occured while connecting to the database",   
+        ));
         die("ERRORED!");
     };
 
     $result1 = $sql->query("SELECT * FROM logindb.logincredentials WHERE username = '$usernameReceived'");
     
-    if (mysqli_num_rows($result1) > 0){
-        echo "It already exist";
-    } else {
-        echo "It does not exist!";
-    }
+    if (mysqli_num_rows($result1) > 0){ // Check if username is already existing
+        echo returnData(array(
+            "isSuccess" => false,
+            "reason" => "Username already exist in the database",
+        ));
+        die();
+    } 
 
+    $result2 = $sql->query("INSERT INTO logindb.logincredentials (username, password) VALUES ('$usernameReceived', '$passwordReceived')");
+
+    echo returnData(array(
+        "isSuccess" => true
+    ));
 ?>
