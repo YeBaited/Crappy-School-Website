@@ -1,4 +1,5 @@
 <?php
+    header("Access-Control-Allow-Origin: *");
     $username = "root";
     $password = "";
     $server = "localhost";
