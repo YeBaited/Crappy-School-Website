@@ -1,7 +1,7 @@
 
 function tryReq(){
     console.log("Fetching lol!")
-    fetch("localhost:82")
+    fetch("http://localhost:82/php/CreateEvent.php")
 }
 
 function AdminPanel(){
