@@ -1,4 +1,5 @@
-function tryCreate(){
+function tryCreate(isCreate : boolean){
+
     const username = document.querySelector("#username") as HTMLInputElement
     const password = document.querySelector("#password") as HTMLInputElement
 
@@ -6,7 +7,7 @@ function tryCreate(){
         "username" : username.value,
         "password" : password.value
     }
-
+    
     
 
     if (data.username == ""){
@@ -14,23 +15,36 @@ function tryCreate(){
         return
     }
 
-
     var ajax = new XMLHttpRequest();
     ajax.onreadystatechange = function(){
         console.log(this.response)
     }
 
-    ajax.open("POST", "http://localhost:82/php/CreateAccount.php")
+    if (isCreate){
+        ajax.open("POST", "http://localhost:82/php/CreateAccount.php")
+    } else {
+        ajax.open("POST", "http://localhost:82/php/LoginAccount.php")
+    }
+
     ajax.send(JSON.stringify(data))
 }
+
+
 
 function Login(){
     return (
         <>
-            <h1>Login</h1>
-            <input className="border border-black" placeholder="Username" id="username" type="text" />
-            <input className="border border-black" placeholder="Password" id="password" type="text" />
-            <button onClick={tryCreate}>Create</button>
+            <div className="bg-blue-500 justify-self-center w-[17rem] p-1 mt-5">
+                <h1 className="text-center text-xl font-bold text-white">LOGIN</h1>
+                <div className="flex flex-col w-5/6 justify-self-center my-1">
+                    <input className="my-1 outline-0 text-white border-b border-white bg-transparent" placeholder="Username" id="username" type="text" />
+                    <input className="my-1 outline-0 text-white border-b border-white bg-transparent mb-5" placeholder="Password" id="password" type="text" />
+                    <button className="bg-blue-400 rounded-xl p-1 text-white outline-0 font-semibold" onClick={() => tryCreate(false)}>Login</button>
+                    <button className="bg-blue-400 rounded-xl p-1 text-white outline-0 font-semibold mt-2" onClick={() => tryCreate(true)}>Create</button>
+                </div>
+
+
+            </div>
         
         </>
     )
