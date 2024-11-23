@@ -4,6 +4,17 @@ function tryReq(){
     fetch("http://localhost:82/php/CreateEvent.php")
 }
 
+function fetchAllLogin(){
+
+    var ajax = new XMLHttpRequest()
+    ajax.onreadystatechange = function(){
+        if (!this.response) return
+        console.log(JSON.parse(this.response))
+    }
+    ajax.open("POST", "http://localhost:82/php/getAllAccounts.php")
+    ajax.send()
+}
+
 function AdminPanel(){
     
 
@@ -35,7 +46,17 @@ function AdminPanel(){
                         <button className="bg-blue-700 p-2 text-white font-bold mx-2">Purge Password</button>
                         <button className="bg-blue-700 p-2 text-white font-bold mx-2">Purge Username</button>
                     </div>
+
+                    <div className="flex mt-1 p-2">
+                        <h1 className="font-bold text-white p-2">System</h1>
+                    </div>
+                    
+                    <div className="flex mt-1 p-2">
+                        <button className="bg-blue-700 p-2 text-white font-bold mx-2" onClick={fetchAllLogin}>Fetch all</button>
+                    </div>
                 </div>
+
+
 
             </div>
 
