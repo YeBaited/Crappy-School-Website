@@ -1,28 +1,54 @@
+import { useState } from "react"
+import CreatePrompt from "../Modules/createPrompt"
 
 function tryReq(){
     console.log("Fetching lol!")
     fetch("http://localhost:82/php/CreateEvent.php")
 }
 
-function fetchAllLogin(){
-
-    var ajax = new XMLHttpRequest()
-    ajax.onreadystatechange = function(){
-        if (!this.response) return
-        console.log(JSON.parse(this.response))
-    }
-    ajax.open("POST", "http://localhost:82/php/getAllAccounts.php")
-    ajax.send()
-}
 
 function AdminPanel(){
+    const [allLogins, setLogin] = useState(["Null1", "Null2"])
     
+    async function fetchAllLogin(){
+    
+        var ajax = new XMLHttpRequest()
+        ajax.onreadystatechange = function(){
+            if (!this.response) return
+    
+            setLogin(JSON.parse(this.response))
+        }
+        ajax.open("POST", "http://localhost:82/php/getAllAccounts.php")
+        ajax.send()
+    }
+
+
 
     return (
         <>  
+            <CreatePrompt></CreatePrompt>
             <div className="flex justify-center mt-5">
-                <div className="h-[30rem] w-[40rem] bg-blue-400 mx-1">
+                <div className="h-[30rem] w-[40rem] bg-blue-400 mx-1 overflow-scroll-x">
+                    
+                    
+                    
                     <h1 className="text-white text-xl font-bold text-center">Login Database</h1>
+
+                    <div className="grid grid-cols-3 gap-5 ">
+                            <h1 className="text-center font-semibold text-white">ID</h1>
+                            <h1 className="text-center font-semibold text-white">USERNAME</h1>
+                            <h1 className="text-center font-semibold text-white">PASSWORD</h1>
+                    </div>
+                    {
+                        allLogins.map((Children : any) => 
+                            <div className="grid grid-cols-3 gap-5 border-b border-white">
+                                <h1 className="text-center">{Children["id"]}</h1>
+                                <h1 className="text-center">{Children["username"]}</h1>
+                                <h1 className="text-center">{Children["password"]}</h1>
+                            </div>
+                        )
+                    }
+
                 </div>
 
                 <div className="h-[30rem] w-[40rem] bg-blue-500 mx-1">
