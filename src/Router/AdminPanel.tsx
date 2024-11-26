@@ -1,5 +1,5 @@
 import { useState } from "react"
-import CreatePrompt from "../Modules/createPrompt"
+import CreatePrompt from "../Modules/CreatePrompt"
 
 function tryReq(){
     console.log("Fetching lol!")
@@ -9,6 +9,7 @@ function tryReq(){
 
 function AdminPanel(){
     const [allLogins, setLogin] = useState(["Null1", "Null2"])
+    const [isShowPopup, setShowPopup] = useState(false)
     
     async function fetchAllLogin(){
     
@@ -26,7 +27,7 @@ function AdminPanel(){
 
     return (
         <>  
-            <CreatePrompt></CreatePrompt>
+            {isShowPopup ? <CreatePrompt /> : null}
             <div className="flex justify-center mt-5">
                 <div className="h-[30rem] w-[40rem] bg-blue-400 mx-1 overflow-scroll-x">
                     
