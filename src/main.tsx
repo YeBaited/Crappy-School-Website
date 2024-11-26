@@ -36,7 +36,7 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <div className="bg-blue-400 flex h-[3rem]">
+    <div className="bg-blue-400 flex h-[3rem] sticky top-0">
         <div className="flex my-auto ml-1">
           <h1 className="ml-1 text-2xl text-white">FEAPITSAT (THIS IS IN FUCKING PROGRESS)</h1>
         </div>

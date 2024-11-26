@@ -1,28 +1,71 @@
+import { useState } from "react"
+import CreatePrompt from "../Modules/CreatePrompt"
 
 function tryReq(){
     console.log("Fetching lol!")
     fetch("http://localhost:82/php/CreateEvent.php")
 }
 
-function fetchAllLogin(){
-
-    var ajax = new XMLHttpRequest()
-    ajax.onreadystatechange = function(){
-        if (!this.response) return
-        console.log(JSON.parse(this.response))
-    }
-    ajax.open("POST", "http://localhost:82/php/getAllAccounts.php")
-    ajax.send()
-}
 
 function AdminPanel(){
+    const [allLogins, setLogin] = useState([])
+    const [isShowPopup, setShowPopup] = useState(false)
+
+    var PromptSettings = {
+        "Title" : "idk1",
+        "Description" : "idk2",
+        "Button" : "YesNo",
+    }
+
     
+    function doPrompt(toShow : boolean, title : string, Description : string, Buttons : string){ // Buttons is YesNo, Understood
+        setShowPopup(toShow)
+    }   
+
+    function fetchAllLogin(){
+    
+        var ajax = new XMLHttpRequest()
+        ajax.onreadystatechange = function(){
+            if (!this.response) return
+    
+            setLogin(JSON.parse(this.response))
+        }
+        ajax.open("POST", "http://localhost:82/php/getAllAccounts.php")
+        ajax.send()
+    }
+
+   
+
+    
+
+
 
     return (
         <>  
+            {isShowPopup ? <CreatePrompt title={PromptSettings.Title} description={PromptSettings.Description} Buttons={PromptSettings.Button} /> : null}
             <div className="flex justify-center mt-5">
-                <div className="h-[30rem] w-[40rem] bg-blue-400 mx-1">
+                <div className="h-[30rem] w-[40rem] bg-blue-400 mx-1 overflow-scroll-x">
+                    
+                    
+                    
                     <h1 className="text-white text-xl font-bold text-center">Login Database</h1>
+
+                    <div className="grid grid-cols-3 gap-5 ">
+                            <h1 className="text-center font-semibold text-white">ID</h1>
+                            <h1 className="text-center font-semibold text-white">USERNAME</h1>
+                            <h1 className="text-center font-semibold text-white">PASSWORD</h1>
+                    </div>
+                    {
+                        
+                        allLogins.map((Children : any) => 
+                            <div key={Children["id"]} className="grid grid-cols-3 gap-5 border-b border-white">
+                                <h1 className="text-center">{Children["id"]}</h1>
+                                <h1 className="text-center">{Children["username"]}</h1>
+                                <h1 className="text-center">{Children["password"]}</h1>
+                            </div>
+                        )
+                    }
+
                 </div>
 
                 <div className="h-[30rem] w-[40rem] bg-blue-500 mx-1">
@@ -42,7 +85,7 @@ function AdminPanel(){
                     </div>
                     
                     <div className="flex mt-1 p-2">
-                        <button className="bg-blue-700 p-2 text-white font-bold mx-2">Purge All</button>
+                        <button className="bg-blue-700 p-2 text-white font-bold mx-2" onClick={() => doPrompt(true, "Test", "test", "Ok")}>Purge All</button>
                         <button className="bg-blue-700 p-2 text-white font-bold mx-2">Purge Password</button>
                         <button className="bg-blue-700 p-2 text-white font-bold mx-2">Purge Username</button>
                     </div>
