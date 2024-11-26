@@ -8,10 +8,21 @@ function tryReq(){
 
 
 function AdminPanel(){
-    const [allLogins, setLogin] = useState(["Null1", "Null2"])
+    const [allLogins, setLogin] = useState([])
     const [isShowPopup, setShowPopup] = useState(false)
+
+    var PromptSettings = {
+        "Title" : "idk1",
+        "Description" : "idk2",
+        "Button" : "YesNo",
+    }
+
     
-    async function fetchAllLogin(){
+    function doPrompt(toShow : boolean, title : string, Description : string, Buttons : string){ // Buttons is YesNo, Understood
+        setShowPopup(toShow)
+    }   
+
+    function fetchAllLogin(){
     
         var ajax = new XMLHttpRequest()
         ajax.onreadystatechange = function(){
@@ -23,11 +34,15 @@ function AdminPanel(){
         ajax.send()
     }
 
+   
+
+    
+
 
 
     return (
         <>  
-            {isShowPopup ? <CreatePrompt /> : null}
+            {isShowPopup ? <CreatePrompt title={PromptSettings.Title} description={PromptSettings.Description} Buttons={PromptSettings.Button} /> : null}
             <div className="flex justify-center mt-5">
                 <div className="h-[30rem] w-[40rem] bg-blue-400 mx-1 overflow-scroll-x">
                     
@@ -41,8 +56,9 @@ function AdminPanel(){
                             <h1 className="text-center font-semibold text-white">PASSWORD</h1>
                     </div>
                     {
+                        
                         allLogins.map((Children : any) => 
-                            <div className="grid grid-cols-3 gap-5 border-b border-white">
+                            <div key={Children["id"]} className="grid grid-cols-3 gap-5 border-b border-white">
                                 <h1 className="text-center">{Children["id"]}</h1>
                                 <h1 className="text-center">{Children["username"]}</h1>
                                 <h1 className="text-center">{Children["password"]}</h1>
@@ -69,7 +85,7 @@ function AdminPanel(){
                     </div>
                     
                     <div className="flex mt-1 p-2">
-                        <button className="bg-blue-700 p-2 text-white font-bold mx-2">Purge All</button>
+                        <button className="bg-blue-700 p-2 text-white font-bold mx-2" onClick={() => doPrompt(true, "Test", "test", "Ok")}>Purge All</button>
                         <button className="bg-blue-700 p-2 text-white font-bold mx-2">Purge Password</button>
                         <button className="bg-blue-700 p-2 text-white font-bold mx-2">Purge Username</button>
                     </div>
