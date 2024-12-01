@@ -1,3 +1,13 @@
+function  ManageLoginData(data : {isSuccess : boolean}){
+    console.log(data)
+
+    if (data["isSuccess"] == true){
+        window.alert("Log In Success!")
+    } else {
+        window.alert("LogIn Failed!")
+    }
+}
+
 function tryCreate(isCreate : boolean){
 
     const username = document.querySelector("#username") as HTMLInputElement
@@ -17,7 +27,10 @@ function tryCreate(isCreate : boolean){
 
     var ajax = new XMLHttpRequest();
     ajax.onreadystatechange = function(){
-        console.log(this.response)
+        if (!this.response) return // This ensure that Null cannot be decoded amen
+        let jsonDecode = JSON.parse(this.response)
+        ManageLoginData(jsonDecode)
+        
     }
 
     if (isCreate){
