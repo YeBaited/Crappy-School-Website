@@ -1,4 +1,35 @@
+import { useEffect, useState } from "react"
+
+
+function EstablishAjax(server : string, payload : string, func : Function ){
+  
+  let ajax = new XMLHttpRequest();
+  ajax.onreadystatechange = function(){
+    if (!this.response) return
+    func(this.response)
+  }
+  ajax.open("POST", server)
+  ajax.send(payload)
+}
+
+
 function App() {
+  let [currentActivity, SetActivity] = useState([])
+  
+  function RetrieveActivity(){
+    EstablishAjax("http://localhost:82/php/getActivities.php", "Plz", function(data : any){
+      let decode = JSON.parse(data)
+      SetActivity(decode)
+    })
+  }
+
+  useEffect(() => {
+    
+    RetrieveActivity()
+
+    
+  }, [])
+
 
   return (  
     <>
@@ -25,24 +56,21 @@ function App() {
         <h1 className="text-4xl text-center font-bold text-blue-500">Activities</h1>
 
         <div className="flex justify-center p-2">
+          {currentActivity.map((children : any) => 
 
-          <div className="border-2 border-blue-500 w-[20rem] p-5 mx-5 rounded-md">
-            <h1 className="text-center font-bold text-blue-500 text-lg">Mobile Legend!</h1>
-            <img src="Extracullicular/MobileLegend.jpg" alt="" className="object-cover h-[90%]" />
-            <p className="text-blue-500 text-sm">Date: January 1, 6969 - January 69, 6969</p>
-          </div>
+              <div className="border-2 border-blue-500 w-[20rem] mx-5 rounded-md" key={children["id"]}>
+                <h1 className="text-center font-bold text-blue-500 text-lg">{children["title"]}</h1>
+                <div className="mx-5">
+                  <img src="Extracullicular/MobileLegend.jpg" alt="" className="object-cover h-[90%]" />
 
-          <div className="border-2 border-blue-500 w-[20rem] p-5 mx-5 rounded-md">
-            <h1 className="text-center font-bold text-blue-500 text-lg">Fieldtrip!</h1>
-            <img src="Extracullicular/FieldTrip.jpg" alt="" className="object-cover h-[90%]" />
-            <p className="text-blue-500 text-sm">Date: January 1, 6969 - January 69, 6969</p>
-          </div>
-
-          <div className="border-2 border-blue-500 w-[20rem] p-5 mx-5 rounded-md">
-            <h1 className="text-center font-bold text-blue-500 text-lg">Research Defense!!!</h1>
-            <img src="Extracullicular/ResearchDefense.jpg" alt="" className="object-cover h-[90%]" />
-            <p className="text-blue-500 text-sm">Date: January 1, 6969 - January 69, 6969</p>
-          </div>  
+                </div>
+                <p className="text-blue-500 text-sm text-center">{children["description"]}</p>
+                <p className="text-blue-500 text-sm text-center font-bold">{children["date"]}</p>
+              </div>
+          
+            )   
+          }
+          
     
 
 
