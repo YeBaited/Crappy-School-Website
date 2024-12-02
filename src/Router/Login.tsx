@@ -1,11 +1,13 @@
-function  ManageLoginData(data : {isSuccess : boolean}){
+function ManageLoginData(data : {isSuccess : boolean}, a1 : string, a2 : string){
     console.log(data)
 
-    if (data["isSuccess"] == true){
-        window.alert("Log In Success!")
-    } else {
+    if (data["isSuccess"] == false){
         window.alert("LogIn Failed!")
     }
+
+    document.cookie = `username=${a1}`
+    document.cookie = `password=${a2}`
+    window.location.href = '/Home';
 }
 
 function tryCreate(isCreate : boolean){
@@ -29,7 +31,7 @@ function tryCreate(isCreate : boolean){
     ajax.onreadystatechange = function(){
         if (!this.response) return // This ensure that Null cannot be decoded amen
         let jsonDecode = JSON.parse(this.response)
-        ManageLoginData(jsonDecode)
+        ManageLoginData(jsonDecode, data.username, data.password)
         
     }
 
