@@ -61,7 +61,7 @@ function App() {
               <div className="border-2 border-blue-500 w-[20rem] mx-5 rounded-md" key={children["id"]}>
                 <h1 className="text-center font-bold text-blue-500 text-lg">{children["title"]}</h1>
                 <div className="mx-5">
-                  <img src="Extracullicular/MobileLegend.jpg" alt="" className="object-cover h-[90%]" />
+                  <img src="Extracullicular/default.webp" alt="" className="object-cover h-[90%]" />
 
                 </div>
                 <p className="text-blue-500 text-sm text-center">{children["description"]}</p>
@@ -74,52 +74,11 @@ function App() {
     
 
 
-          
-
-        </div>
-        
-        <div className="flex justify-center">
-
-          <div className="mx-1 bg-blue-500 p-1 opacity-50">
-            <button className="text-white text-2xl font-bold">&lt;</button>
-          </div>
-
-          <div className="mx-1 bg-blue-500 p-1 opacity-100">
-            <button className="text-white text-2xl font-bold">&gt;</button>
-          </div>
 
         </div>
       </div>
 
-      <div className="mx-auto w-[70rem] mt-10">
-        <h1 className="text-4xl text-center font-bold text-blue-500">Newsletter</h1>
-
-        <div className="flex justify-center p-2">
-
-          <div className="border-2 border-blue-500 w-[30rem] p-5 mx-5 rounded-md">
-            <h1 className="text-center font-bold text-blue-500 text-lg">Missing!</h1>
-            <img src="NewsLetter/BinLaden.jpg" alt="" className="object-cover h-[90%]" />
-            <p className="text-blue-500 text-sm">Date: January 11, 1999</p>
-          </div>
-
-
-
-
-
-        </div>
-        
-        <div className="flex justify-center">
-
-          <div className="mx-1 bg-blue-500 p-1 opacity-50">
-            <button className="text-white text-2xl font-bold">&lt;</button>
-          </div>
-
-          <div className="mx-1 bg-blue-500 p-1 opacity-100">
-            <button className="text-white text-2xl font-bold">&gt;</button>
-          </div>
-
-        </div>
-      </div>
+      
     </>
   )
 }
