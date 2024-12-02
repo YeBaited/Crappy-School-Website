@@ -5,6 +5,7 @@ import App from './App.tsx'
 import Enroll from './Router/Enroll.tsx'
 import Login from './Router/Login.tsx'
 import AdminPanel from './Router/AdminPanel.tsx'
+import MainHome from './Router/MainHome.tsx'
 
 import { 
   createBrowserRouter, 
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "*",
     element: <h1>UNKNOWN!</h1>
+  },
+  {
+    path: "/Home",
+    element: <MainHome />
   }
 ])
 
