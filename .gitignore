@@ -1,4 +1,5 @@
 # Logs
+php/FirebasePriv.json
 logs
 *.log
 npm-debug.log*
