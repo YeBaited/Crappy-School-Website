@@ -58,8 +58,7 @@ function MainHome(){
 
                     
 
-                    
-                    
+
                 </div>
             </div>
         </div>
