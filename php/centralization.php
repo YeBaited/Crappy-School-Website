@@ -1,11 +1,7 @@
 <?php
-require __DIR__ . "/vendor/autoload.php";
-
 $server = "localhost";
 $username = "root";
 $password = "";
-
-use Kreait\Firebase\Factory;
 
 function joshieTryLogin($passedUserername, $passedPassword){
         global $server;
@@ -36,6 +32,8 @@ function joshieTryLogin($passedUserername, $passedPassword){
     }
 
 
-    function joshieTryFirestore(){
-    };
+   
+        
+        
+    
 ?>

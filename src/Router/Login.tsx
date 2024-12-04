@@ -3,6 +3,7 @@ function ManageLoginData(data : {isSuccess : boolean}, a1 : string, a2 : string)
 
     if (data["isSuccess"] == false){
         window.alert("LogIn Failed!")
+        return
     }
 
     document.cookie = `username=${a1}`

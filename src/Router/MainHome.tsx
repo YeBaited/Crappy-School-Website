@@ -5,7 +5,7 @@ function getcookie(thename : string){
     for (let i = 0; i < split.length; i++){
         const split1 = split[i].split("=")
         if (split1[0] == thename){
-            console.log(split1[1])
+            return split1[1]
         }
     }   
 }
@@ -16,7 +16,7 @@ function MainHome(){
     return (
         <div className="px-5 mt-5">
             <div>
-                <h1 className="font-bold text-xl">Welcome, NAME</h1>
+                <h1 className="font-bold text-xl">Welcome, {getcookie("username")}</h1>
                 
 
                 <div className="flex justify-center">

@@ -35,7 +35,7 @@ function App() {
     <>
 
 
-      <img src="SchoolCover.jpg" className="justify-self-center object-contain" />
+      <img src="SchoolCover.png" className= "h-[30vw] justify-self-center object-contain" />
 
       <div className="justify-self-center mb-10 flex w-[70rem]">
 
@@ -46,8 +46,8 @@ function App() {
         </div>
         
         <div className="mx-auto w-full">
-          <img src="FeapitsatLogo.jpg" className="justify-self-center object-contain h-[13rem]"/>
-          <h1 className="text-center font-light text-lg">"Far East Asia Pacific Institute Of Tourism And Technology"</h1>
+          <img src="FeapitsatLogo.gif" className="justify-self-center object-contain h-[13rem]"/>
+          <h1 className="text-center font-light text-lg">"Some random school"</h1>
         </div>
         
       </div>
